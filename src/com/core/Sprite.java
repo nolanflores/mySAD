@@ -36,6 +36,11 @@ public class Sprite {
         g.drawImage(texture,(int)xcor-width/2,(int)ycor-height/2, width, height, panel);
     }
 
+    public void setLoc(double rx, double ry){
+        relativeX = rx;
+        relativeY = ry;
+    }
+
     public Hitbox Hitbox(){
         return hitbox;
     }

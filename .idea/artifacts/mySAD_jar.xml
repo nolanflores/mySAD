@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="mySAD:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/mySAD_jar</output-path>
+    <root id="archive" name="mySAD.jar">
+      <element id="dir-copy" path="$PROJECT_DIR$/Assets" />
+      <element id="module-output" name="mySAD" />
+    </root>
+  </artifact>
+</component>

@@ -3,18 +3,21 @@ package com.Window.Scenes;
 import com.Window.Frame;
 import com.Window.Panel;
 import com.core.Characters.Chorby;
+import com.core.Sprite;
 import com.core.Team;
 
 import java.awt.*;
 
 public class shopScreen extends Panel {
     private Team team;
+    private Sprite dot;
 
     public shopScreen(Frame f, Team t) {
         super(f);
         team = t;
+        dot = new Sprite("Assets/dot.png",-1,-1,this);
         t.setPet(0,new Chorby(this));
-        //t.setPet(1,new Chorby(this));
+        t.setPet(1,new Chorby(this));
         t.setPet(2,new Chorby(this));
         t.setPet(3,new Chorby(this));
         t.setPet(4,new Chorby(this));
@@ -37,5 +40,9 @@ public class shopScreen extends Panel {
         g.fillRect(0,0,getWidth(),getHeight()/4);
         g.setColor(Color.BLACK);
         g.fillRect(0,getHeight()/4,getWidth(),getHeight()/100);
+        for(double x = .1; x <= .5; x+=.1){
+            dot.setLoc(x,.43);
+            dot.draw(g,xscale/1.3,yscale/1.5);
+        }
     }
 }

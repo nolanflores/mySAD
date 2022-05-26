@@ -16,23 +16,6 @@ public class Team {
         if(index >= 0 && index < 5) {
             if (pets[index] == null) {
                 pets[index] = p;
-                switch(index){
-                    case 0:
-                        p.setLoc(.1,.4);
-                        break;
-                    case 1:
-                        p.setLoc(.2,.4);
-                        break;
-                    case 2:
-                        p.setLoc(.3,.4);
-                        break;
-                    case 3:
-                        p.setLoc(.4,.4);
-                        break;
-                    case 4:
-                        p.setLoc(.5,.4);
-                        break;
-                }
             }
         }
     }
@@ -41,10 +24,24 @@ public class Team {
         return pets[index];
     }
 
-    public void drawPets(Graphics2D g, double xscale, double yscale){
-        for(Pet p : pets){
+    public void drawInShop(Graphics2D g, double xscale, double yscale){
+        for(int i = 0; i < 5; i++){
+            Pet p = pets[i];
             if(p != null){
-                p.draw(g,xscale,yscale);
+                p.setLoc(.14+(.075*i), .4);
+                p.draw(g,xscale*.9,yscale*.9);
+            }
+        }
+    }
+
+    public void drawInBattle(Graphics2D g, double xscale, double yscale){
+        int ind = 0;
+        for(int i = 4; i >= 0; i--){
+            Pet p = pets[i];
+            if(p != null){
+                p.setLoc(.44-(.075*ind), .4);
+                p.draw(g,xscale*.9,yscale*.9);
+                ind++;
             }
         }
     }

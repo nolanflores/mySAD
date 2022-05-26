@@ -16,9 +16,9 @@ public class mainMenu extends Panel {
     public mainMenu(Frame f){
         super(f);
         setBackground(new Color(139, 253, 250));
-        title = new Sprite("Assets/title.png",.5,.2, this);
-        sun = new Sprite("Assets/sun.png", .9,.1, this);
-        playButton = new Sprite("Assets/menuOption.png",.5,.6,this);
+        title = new Sprite("Assets/menu/title.png",.5,.2, this);
+        sun = new Sprite("Assets/menu/sun.png", .9,.1, this);
+        playButton = new Sprite("Assets/menu/menuOption.png",.5,.6,this);
     }
 
     @Override
@@ -30,12 +30,12 @@ public class mainMenu extends Panel {
         if(sun.clickedOn()){
             isDay = false;
             setBackground(new Color(14, 9, 23));
-            sun = new Sprite("Assets/moon.png", .9,.1, this);
+            sun = new Sprite("Assets/menu/moon.png", .9,.1, this);
         }
         else{
             isDay = true;
             setBackground(new Color(139, 253, 250));
-            sun = new Sprite("Assets/sun.png", .9,.1, this);
+            sun = new Sprite("Assets/menu/sun.png", .9,.1, this);
         }
         sun.draw(g2,xscale,yscale);
         playButton.draw(g2,xscale/1.75,yscale/1.75);

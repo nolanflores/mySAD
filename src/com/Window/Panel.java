@@ -23,8 +23,8 @@ public class Panel extends JPanel {
 
     public Panel(Frame f){
         main = f;
-        initialheight = screenSize.height/2;
-        initialwidth = screenSize.width/2;
+        initialheight = 720;
+        initialwidth = 1280;
         setPreferredSize(new Dimension(initialwidth, initialheight));
         width = this.getWidth();
         height = this.getHeight();

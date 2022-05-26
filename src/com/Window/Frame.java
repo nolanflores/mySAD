@@ -12,8 +12,6 @@ public class Frame extends JFrame {
         setTitle("Super Auto Dunlea");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addKeyListener(new Keyboard());
-        addMouseListener(Mouse.get());
-        addMouseMotionListener(Mouse.get());
         setScreen(new splashScreen(this));
         pack();
         setLocationRelativeTo(null);
@@ -26,6 +24,8 @@ public class Frame extends JFrame {
             remove(current);
         current = p;
         add(p);
+        p.addMouseListener(Mouse.get());
+        p.addMouseMotionListener(Mouse.get());
         setVisible(true);
     }
 }

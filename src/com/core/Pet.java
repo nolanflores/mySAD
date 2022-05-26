@@ -4,6 +4,8 @@ import com.Window.Panel;
 
 public class Pet extends Sprite{
     protected int tier;
+    protected int InitialHealth;
+    protected int InitialDamage;
     protected int damage;
     protected int health;
 
@@ -16,6 +18,21 @@ public class Pet extends Sprite{
     }
     public int getHealth(){
         return health;
+    }
+
+    public void prepare(){
+        damage = InitialDamage;
+        health = InitialHealth;
+    }
+
+    public void addHealth(int dh){
+        health += dh;
+    }
+    public void takeDamage(int dh){
+        health -= dh;
+    }
+    public void addDamage(int dd){
+        damage += dd;
     }
 
     public void ability(){

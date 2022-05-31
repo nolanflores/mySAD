@@ -7,15 +7,25 @@ import java.util.ArrayList;
 
 public class Team {
     private Pet[] pets;
+    private Item[] items;
 
     public Team(){
         pets = new Pet[5];
+        items = new Item[5];
     }
 
     public void setPet(int index, Pet p){
         if(index >= 0 && index < 5) {
             if (pets[index] == null) {
                 pets[index] = p;
+            }
+        }
+    }
+
+    public void setItem(int index, Item i){
+        if(index >= 0 && index < 5) {
+            if (items[index] == null) {
+                items[index] = i;
             }
         }
     }

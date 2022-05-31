@@ -6,6 +6,7 @@ import com.Window.Frame;
 import com.core.Sprite;
 import com.utils.Mouse;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class mainMenu extends Panel {

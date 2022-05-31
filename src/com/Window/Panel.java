@@ -6,7 +6,6 @@ import com.core.Sprite;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 public class Panel extends JPanel {
     private final int initialwidth, initialheight;

@@ -9,6 +9,8 @@ public class Pet extends Sprite{
     protected int damage;
     protected int health;
 
+    protected Item item;
+
     protected Pet(String path, double x, double y, Panel p) {
         super(path, x, y, p);
     }
@@ -35,7 +37,14 @@ public class Pet extends Sprite{
         damage += dd;
     }
 
-    public void ability(){
-
+    public void onBuy(Pet[] team, int index){
+    }
+    public void onStart(Pet[] team, int index){
+    }
+    public void onTurn(Pet[] team, int index){
+    }
+    public void onDeath(Pet[] team, int index){
+    }
+    public void onSell(Pet[] team, int index){
     }
 }

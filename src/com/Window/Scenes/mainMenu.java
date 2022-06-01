@@ -50,7 +50,7 @@ public class mainMenu extends Panel {
             g.setColor(new Color(14, 207, 69));
         else
             g.setColor(new Color(4, 91, 28));
-        g.fillRect(0,getHeight(),getWidth(),-getHeight()/3);
+        g.fillRect(0,getHeight()-getHeight()/3,getWidth(),getHeight()/3);
         g.setColor(Color.BLACK);
         g.fillRect(0,getHeight()-getHeight()/3,getWidth(),getHeight()/100);
     }

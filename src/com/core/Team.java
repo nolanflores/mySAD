@@ -32,6 +32,9 @@ public class Team {
         return false;
     }
 
+    public Pet[] getPets(){
+        return pets;
+    }
 
     public Pet getPet(int index){
         return pets[index];
@@ -41,7 +44,7 @@ public class Team {
         for(int i = 0; i < 5; i++){
             Pet p = pets[i];
             if(p != null){
-                p.setLoc(.14+(.075*i), .4);
+                p.setLoc(.14+(.075*i), .365);
                 p.draw(g,xscale*.68,yscale*.7);
             }
         }

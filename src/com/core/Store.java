@@ -3,27 +3,29 @@ package com.core;
 import java.awt.*;
 
 public class Store {
-    private Pet[] merch;
-    private int round;
+    private Pet[] merch = new Pet[3];;
 
-    public Store(int r){
-        round = r;
-        merch = new Pet[3+(r-1)/3];
+    public Store(){
+        roll();
     }
 
     public void roll(){
-        for(Pet p : merch){
-
-        }
+        merch[0] = Pet.randomPet();
+        merch[1] = Pet.randomPet();
+        merch[2] = Pet.randomPet();
     }
 
+    public Pet[] getMerch(){
+        return merch;
+    }
+
+
     public void drawInShop(Graphics2D g, double xscale, double yscale){
-        for(int i = 0; i < merch.length; i++){
+        for(int i = 0; i < 3; i++){
             Pet p = merch[i];
-            if(p != null){
-                p.setLoc(.14+(.075*i), .4);
-                p.draw(g,xscale*.9,yscale*.9);
-            }
+            p.setLoc(.14+(.075*i), .565);
+            p.draw(g,xscale*.68,yscale*.7);
+
         }
     }
 }

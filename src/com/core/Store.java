@@ -3,7 +3,8 @@ package com.core;
 import java.awt.*;
 
 public class Store {
-    private Pet[] merch = new Pet[3];;
+    private Pet[] merch = new Pet[3];
+    private Item[] items;
 
     public Store(){
         roll();

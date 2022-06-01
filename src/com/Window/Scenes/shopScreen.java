@@ -18,7 +18,8 @@ public class shopScreen extends Panel {
     private Image teamLabel, shopLabel;
 
     private Image selector;
-    private Sprite selected;
+    private int selectIndex = -1, selectLoc = -1;
+    private Sprite selected, ready;
 
 
     public shopScreen(Team t) {
@@ -27,6 +28,7 @@ public class shopScreen extends Panel {
         selector = new Image("Assets/shop/Selector.png", -1,-1);
         shopLabel = new Image("Assets/shop/shoplabel.jpg",.05,.6);
         teamLabel = new Image("Assets/shop/teamlabel.jpg",.05,.4);
+        ready = new Sprite("Assets/shop/ready.png",.825,.88);
         setBackground(new Color(14, 207, 69));
     }
     public shopScreen() {
@@ -39,17 +41,19 @@ public class shopScreen extends Panel {
         Graphics2D g2 = (Graphics2D)g;
         drawBackground(g2);
 
+        setFocus();
+
         store.drawInShop(g2,xscale,yscale);
         team.drawInShop(g2,xscale,yscale);
+        ready.draw(g2,xscale,yscale);
         shopLabel.draw(g2,xscale,yscale);
         teamLabel.draw(g2,xscale,yscale);
         selector.draw(g2,xscale,yscale);
 
-        setFocus();
-        if(selected != null)
-            System.out.println(selected.getClass());
-        else
-            System.out.println("None selected");
+        System.out.println(selectLoc+", "+selectIndex);
+
+        if(ready.clickedOn() && team.hasPets())
+            Frame.setScreen(new battleScreen());
     }
 
     private void setFocus(){
@@ -58,10 +62,13 @@ public class shopScreen extends Panel {
                 Pet p;
                 if(i < team.getPets().length){
                     p = team.getPets()[i];
+                    selectLoc = 0;
+                    selectIndex = i;
                 }
                 else{
                     p = store.getMerch()[i-team.getPets().length];
-
+                    selectLoc = 1;
+                    selectIndex = i-team.getPets().length;
                 }
                 if(p.clickedOn()){
                     selector.setLoc(p.getX(),p.getY()+.016);
@@ -71,6 +78,8 @@ public class shopScreen extends Panel {
                 else{
                     selector.setLoc(-1,-1);
                     selected = null;
+                    selectLoc = -1;
+                    selectIndex = -1;
                 }
             }
 

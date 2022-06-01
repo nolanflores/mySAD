@@ -8,8 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Panel extends JPanel {
-    private final int initialwidth, initialheight;
-    protected Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private final int INITIALWIDTH = 1280, INITIALHEIGHT = 720;
+    //protected Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     protected Coordinate center;
     protected int width, height;
     protected double xscale, yscale;
@@ -18,16 +18,11 @@ public class Panel extends JPanel {
     public double dt;
     public int fps;
 
-    protected Frame main;
-
-    public Panel(Frame f){
-        main = f;
-        initialheight = 720;
-        initialwidth = 1280;
-        setPreferredSize(new Dimension(initialwidth, initialheight));
+    public Panel(){
+        setPreferredSize(new Dimension(INITIALWIDTH, INITIALHEIGHT));
         width = this.getWidth();
         height = this.getHeight();
-        center = new Coordinate(initialwidth/2,initialheight/2);
+        center = new Coordinate(INITIALWIDTH/2,INITIALHEIGHT/2);
         last = System.nanoTime();
     }
 
@@ -41,8 +36,8 @@ public class Panel extends JPanel {
         width = this.getWidth();
         height = this.getHeight();
         center.set(width/2,height/2);
-        xscale = (double)width/(double)initialwidth;
-        yscale = (double)height/(double)initialheight;
+        xscale = (double)width/(double)INITIALWIDTH;
+        yscale = (double)height/(double)INITIALHEIGHT;
         repaint();
     }
 }

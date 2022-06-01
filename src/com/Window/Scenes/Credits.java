@@ -7,8 +7,7 @@ import java.awt.*;
 
 public class Credits extends Panel {
 
-    public Credits(Frame f) {
-        super(f);
+    public Credits() {
     }
 
     @Override

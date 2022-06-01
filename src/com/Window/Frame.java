@@ -7,25 +7,28 @@ import com.utils.Mouse;
 import javax.swing.*;
 
 public class Frame extends JFrame {
-    private Panel current;
+
+    private static Frame main;
+    public static Panel current;
+
     public Frame(){
+        main = this;
         setTitle("Super Auto Dunlea");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addKeyListener(new Keyboard());
-        setScreen(new splashScreen(this));
+        setScreen(new splashScreen());
         pack();
         setLocationRelativeTo(null);
     }
-    public void run(){
-    }
 
-    public void setScreen(Panel p){
+    public static void setScreen(Panel p){
+        Mouse.refresh();
         if(current != null)
-            remove(current);
+            main.remove(current);
         current = p;
-        add(p);
+        main.add(p);
         p.addMouseListener(Mouse.get());
         p.addMouseMotionListener(Mouse.get());
-        setVisible(true);
+        main.setVisible(true);
     }
 }

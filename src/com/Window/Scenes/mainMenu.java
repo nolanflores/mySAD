@@ -14,12 +14,11 @@ public class mainMenu extends Panel {
     Sprite title;
     Sprite playButton;
     boolean isDay;
-    public mainMenu(Frame f){
-        super(f);
+    public mainMenu(){
         setBackground(new Color(139, 253, 250));
-        title = new Sprite("Assets/menu/title.png",.5,.2, this);
-        sun = new Sprite("Assets/menu/sun.png", .9,.1, this);
-        playButton = new Sprite("Assets/menu/menuOption.png",.5,.6,this);
+        title = new Sprite("Assets/menu/title.png",.5,.2);
+        sun = new Sprite("Assets/menu/sun.png", .9,.1);
+        playButton = new Sprite("Assets/menu/menuOption.png",.5,.6);
     }
 
     @Override
@@ -31,17 +30,17 @@ public class mainMenu extends Panel {
         if(sun.clickedOn()){
             isDay = false;
             setBackground(new Color(14, 9, 23));
-            sun = new Sprite("Assets/menu/moon.png", .9,.1, this);
+            sun = new Sprite("Assets/menu/moon.png", .9,.1);
         }
         else{
             isDay = true;
             setBackground(new Color(139, 253, 250));
-            sun = new Sprite("Assets/menu/sun.png", .9,.1, this);
+            sun = new Sprite("Assets/menu/sun.png", .9,.1);
         }
         sun.draw(g2,xscale,yscale);
         playButton.draw(g2,xscale/1.75,yscale/1.75);
         if(playButton.clickedOn()){
-            main.setScreen(new shopScreen(main));
+            Frame.setScreen(new shopScreen());
         }
     }
 

@@ -1,17 +1,19 @@
 package com.core;
 
 import com.core.Characters.Chorby;
+import com.core.Characters.NoPet;
 
 import java.awt.*;
 import java.util.ArrayList;
 
 public class Team {
     private Pet[] pets;
-    private Item[] items;
 
     public Team(){
         pets = new Pet[5];
-        items = new Item[5];
+        for(Pet p : pets){
+            p = new NoPet();
+        }
     }
 
     public void setPet(int index, Pet p){
@@ -22,13 +24,14 @@ public class Team {
         }
     }
 
-    public void setItem(int index, Item i){
-        if(index >= 0 && index < 5) {
-            if (items[index] == null) {
-                items[index] = i;
-            }
+    public boolean hasPets(){
+        for(Pet p : pets){
+            if(!(p instanceof NoPet))
+                return true;
         }
+        return false;
     }
+
 
     public Pet getPet(int index){
         return pets[index];
@@ -39,7 +42,7 @@ public class Team {
             Pet p = pets[i];
             if(p != null){
                 p.setLoc(.14+(.075*i), .4);
-                p.draw(g,xscale*.9,yscale*.9);
+                p.draw(g,xscale*.68,yscale*.7);
             }
         }
     }
@@ -54,5 +57,15 @@ public class Team {
                 ind++;
             }
         }
+    }
+
+    public static Team randomTeam(){
+        Team t = new Team();
+        t.setPet(0,Pet.randomPet());
+        t.setPet(1,Pet.randomPet());
+        t.setPet(2,Pet.randomPet());
+        t.setPet(3,Pet.randomPet());
+        t.setPet(4,Pet.randomPet());
+        return t;
     }
 }

@@ -12,11 +12,10 @@ import java.awt.*;
 public class splashScreen extends Panel {
     Sprite logo;
     Sound cry;
-    public splashScreen(Frame f){
-        super(f);
+    public splashScreen(){
         setBackground(Color.BLACK);
-        logo = new Sprite("assets/diapergames.jpg", .5,.5, this);
-        cry = new Sound("assets/baby.wav");
+        logo = new Sprite("Assets/diapergames.jpg", .5,.5);
+        cry = new Sound("Assets/baby.wav");
         cry.play();
     }
 
@@ -29,7 +28,7 @@ public class splashScreen extends Panel {
             System.exit(0);
         }
         if(!cry.isPlaying) {
-            main.setScreen(new mainMenu(main));
+            Frame.setScreen(new mainMenu());
         }
     }
 }

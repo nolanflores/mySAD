@@ -1,5 +1,6 @@
 package com.utils;
 
+import com.Window.Panel;
 import com.core.Coordinate;
 
 import java.awt.event.MouseEvent;
@@ -28,6 +29,13 @@ public class Mouse implements MouseListener, MouseMotionListener {
             return buttons[button];
         return false;
     }
+
+    public static void refresh(){
+        buttons[0] = false;
+        buttons[1] = false;
+        buttons[2] = false;
+    }
+
 
     @Override
     public void mouseClicked(MouseEvent e) {}

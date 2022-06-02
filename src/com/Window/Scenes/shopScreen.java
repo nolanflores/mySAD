@@ -14,22 +14,28 @@ import java.util.ArrayList;
 
 public class shopScreen extends Panel {
 
+    private int gold;
+
     private Team team;
     private Store store;
     private Image teamLabel, shopLabel;
 
     private Image selector;
     private int selectIndex = -1, selectLoc = -1;
-    private Sprite selected, ready;
+    private Sprite selected, ready, roll,goldlabel;
 
+    private long rollCooldown;
 
     public shopScreen(Team t) {
+        gold = 10;
         team = Team.randomTeam();
         store = new Store();
+        roll = new Sprite("Assets/shop/Roll.png",.15,.9);
+        goldlabel = new Sprite("Assets/shop/gold.png",.065,.07);
         selector = new Image("Assets/shop/Selector.png", -1,-1);
         shopLabel = new Image("Assets/shop/shoplabel.jpg",.05,.6);
         teamLabel = new Image("Assets/shop/teamlabel.jpg",.05,.4);
-        ready = new Sprite("Assets/shop/ready.png",.825,.88);
+        ready = new Sprite("Assets/shop/ready.png",.85,.9);
         setBackground(new Color(14, 207, 69));
     }
     public shopScreen() {
@@ -44,14 +50,21 @@ public class shopScreen extends Panel {
 
         setFocus();
 
+        goldlabel.draw(g2,xscale,yscale);
+        roll.draw(g2,xscale*.8,yscale*.8);
         store.drawInShop(g2,xscale,yscale);
         team.drawInShop(g2,xscale,yscale);
-        ready.draw(g2,xscale,yscale);
+        ready.draw(g2,xscale*.8,yscale*.8);
         shopLabel.draw(g2,xscale,yscale);
         teamLabel.draw(g2,xscale,yscale);
         selector.draw(g2,xscale,yscale);
 
-        System.out.println(selectLoc+", "+selectIndex);
+
+        if(roll.clickedOn() && System.nanoTime()-rollCooldown>700000000 && gold > 0){
+            gold--;
+            store.roll();
+            rollCooldown = System.nanoTime();
+        }
 
         if(ready.clickedOn() && team.hasPets())
             Frame.setScreen(new battleScreen());

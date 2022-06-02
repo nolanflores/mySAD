@@ -2,10 +2,11 @@ package com.core.Items;
 
 import com.core.Item;
 
+import java.awt.*;
+
 public class NoItem extends Item {
-    public NoItem(double x, double y) {
-        super("", x, y);
+
+    public NoItem(String path, double x, double y) {
+        super(path, x, y);
     }
-
-
 }

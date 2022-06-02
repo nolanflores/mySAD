@@ -5,6 +5,7 @@ import com.Window.Panel;
 import com.core.*;
 import com.core.Characters.Chorby;
 import com.core.Characters.Minion;
+import com.core.Characters.NoPet;
 import com.core.Image;
 import com.utils.Mouse;
 
@@ -58,22 +59,35 @@ public class shopScreen extends Panel {
 
     private void setFocus(){
         if(Mouse.isPressed(0)){
-            for(int i = 0; i < team.getPets().length+store.getMerch().length; i++){
-                Pet p;
-                if(i < team.getPets().length){
+            for(int i = 0; i < 10; i++){
+                Sprite p;
+                if(i < 5){
                     p = team.getPets()[i];
                     selectLoc = 0;
                     selectIndex = i;
                 }
-                else{
-                    p = store.getMerch()[i-team.getPets().length];
+                else if(i < 8){
+                    p = store.getMerch()[i-5];
                     selectLoc = 1;
-                    selectIndex = i-team.getPets().length;
+                    selectIndex = i-5;
                 }
-                if(p.clickedOn()){
-                    selector.setLoc(p.getX(),p.getY()+.016);
-                    selected = p;
-                    break;
+                else{
+                    p = store.getItems()[i-8];
+                    selectLoc = 2;
+                    selectIndex = i -8;
+                }
+                if(p != null) {
+                    if (p.clickedOn() && (selectLoc != 1 || !(p instanceof NoPet))) {
+                        selector.setLoc(p.getX(), p.getY() + .016);
+                        selected = p;
+                        break;
+                    }
+                    else{
+                        selector.setLoc(-1,-1);
+                        selected = null;
+                        selectLoc = -1;
+                        selectIndex = -1;
+                    }
                 }
                 else{
                     selector.setLoc(-1,-1);

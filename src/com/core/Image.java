@@ -36,4 +36,21 @@ public class Image {
         relativeX = rx;
         relativeY = ry;
     }
+
+    public static BufferedImage textToImage(String text){
+        BufferedImage img = new BufferedImage(1,1,BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = img.createGraphics();
+        g2.setFont(new Font("Arial",Font.PLAIN,12));
+        FontMetrics fm = g2.getFontMetrics();
+        int width = fm.stringWidth(text);
+        int height = fm.getHeight();
+        g2.dispose();
+        img = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
+        g2 = img.createGraphics();
+        fm = g2.getFontMetrics();
+        g2.setColor(Color.WHITE);
+        g2.drawString(text, 0, fm.getAscent());
+        g2.dispose();
+        return img;
+    }
 }

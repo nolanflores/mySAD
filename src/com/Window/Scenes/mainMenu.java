@@ -39,6 +39,8 @@ public class mainMenu extends Panel {
         }
         sun.draw(g2,xscale,yscale);
         playButton.draw(g2,xscale/1.75,yscale/1.75);
+
+
         if(playButton.clickedOn()){
             Frame.setScreen(new shopScreen());
         }

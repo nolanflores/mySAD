@@ -19,7 +19,7 @@ public class Store {
         merch[0] = Pet.randomPet();
         merch[1] = Pet.randomPet();
         merch[2] = Pet.randomPet();
-        items[0] = null;
+        items[0] = Item.randomItem();
         items[1] = Item.randomItem();
     }
 
